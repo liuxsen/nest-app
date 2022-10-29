@@ -1,0 +1,23 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: add--save",
+      "code": "ENOENT",
+      "stack": "Error: not found: add--save\n    at getNotFoundError (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:36342:51)\n    at Function.whichSync [as sync] (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:36419:13)\n    at getCommandAbsolutePathSync (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:37984:44)\n    at default_1 (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:37993:32)\n    at /Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:130225:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/Users/liujianhui/apps/nest-app",
+    "err": {
+      "name": "pnpm",
+      "message": "not found: add--save",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: add--save\n    at getNotFoundError (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:36342:51)\n    at Function.whichSync [as sync] (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:36419:13)\n    at getCommandAbsolutePathSync (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:37984:44)\n    at default_1 (/Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:37993:32)\n    at /Users/liujianhui/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:130225:39"
+    }
+  }
+}
