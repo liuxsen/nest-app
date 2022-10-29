@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { ConfigService } from '@nestjs/config'
 import { ApiTags } from '@nestjs/swagger'
+import { BusinessException } from '../common/exceptions/business.exception.filter';
 
 @ApiTags('user')
 @Controller('user')
@@ -21,7 +22,10 @@ export class UserController {
 
   @Get()
   findAll () {
-    return this.configService.get('TEST_VALUE').name
+    // return this.configService.get('TEST_VALUE').name
+    // throw new Error('error msg')
+    // throw new BusinessException('error')
+    return BusinessException.throwForbidden()
   }
 
   @Get(':id')
