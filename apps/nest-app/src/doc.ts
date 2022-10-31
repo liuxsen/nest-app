@@ -1,5 +1,5 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
-import * as packageConfig from '../package.json'
+import * as packageConfig from '../../../package.json'
 import { NestExpressApplication } from '@nestjs/platform-express'
 
 export const generateDocument = (app: NestExpressApplication) => {

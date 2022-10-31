@@ -2,8 +2,8 @@
   "compilerOptions": {
     "paths": {
       "@/*": [
-        "src/*"
-      ],
+        "apps/*"
+      ]
     },
     "module": "commonjs",
     "declaration": true,

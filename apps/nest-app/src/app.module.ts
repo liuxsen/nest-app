@@ -3,6 +3,7 @@ import { UserModule } from './user/user.module'
 // import { AppController } from './app.controller'
 import { ConfigModule } from '@nestjs/config'
 import { getConfig } from './common/utils/getconfig'
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [

@@ -1,5 +1,5 @@
 import axios, { Method } from 'axios';
-import { getConfig } from '@/common/utils';
+import { getConfig } from '@/nest-app/src/common/utils';
 
 const { FEISHU_CONFIG: { FEISHU_URL } } = getConfig()
 

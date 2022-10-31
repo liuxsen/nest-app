@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, CACHE_MANAGER } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, CACHE_MANAGER, Query } from '@nestjs/common'
 import { UserService } from './user.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config'
 import { ApiTags } from '@nestjs/swagger'
 import { BusinessException } from '../common/exceptions/business.exception.filter';
 import { Cache } from 'cache-manager'
+import { ClientProxy } from '@nestjs/microservices'
 
 @ApiTags('user')
 @Controller('user')
@@ -13,12 +14,19 @@ export class UserController {
   constructor (
     private readonly userService: UserService,
     private readonly configService: ConfigService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    @Inject('MATH_SERVICE') private readonly client: ClientProxy
   ) {}
+
 
   @Post()
   create (@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto)
+  }
+
+  @Get('service')
+  getService(@Query('name') name: string){
+    return this.client.send({cmd: 'getHello'}, name).toPromise()
   }
 
   @Get('sec-cache')
