@@ -1,18 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, CACHE_MANAGER } from '@nestjs/common'
 import { UserService } from './user.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { ConfigService } from '@nestjs/config'
 import { ApiTags } from '@nestjs/swagger'
 import { BusinessException } from '../common/exceptions/business.exception.filter';
+import { Cache } from 'cache-manager'
 
 @ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor (
     private readonly userService: UserService,
-    private readonly configService: ConfigService
-
+    private readonly configService: ConfigService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache
   ) {}
 
   @Post()
@@ -20,6 +21,17 @@ export class UserController {
     return this.userService.create(createUserDto)
   }
 
+  @Get('sec-cache')
+  setCache(){
+    return this.cacheManager.set('cache-key', 1, 5000)
+  }
+
+  @Get('cache')
+  async getCache(){
+    const data = await this.cacheManager.get('cache-key')
+    console.log(data)
+    return data
+  }
   @Get()
   findAll () {
     // return this.configService.get('TEST_VALUE').name

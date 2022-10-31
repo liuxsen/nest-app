@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common'
+import { CacheModule, Module } from '@nestjs/common'
 import { UserModule } from './user/user.module'
 // import { AppController } from './app.controller'
 import { ConfigModule } from '@nestjs/config'
-import { getConfig } from './common/config/getconfig'
+import { getConfig } from './common/utils/getconfig'
 
 @Module({
   imports: [
@@ -13,6 +13,9 @@ import { getConfig } from './common/config/getconfig'
         ignoreEnvFile: true // environment files (.env) will be ignored.
       }
     ),
+    CacheModule.register({
+      isGlobal: true
+    }),
     UserModule
   ],
   controllers: []
