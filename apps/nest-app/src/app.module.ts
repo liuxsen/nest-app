@@ -6,6 +6,7 @@ import { getConfig } from './common/utils/getconfig'
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StoreModule } from './store/store.module';
+import { MemberModule } from './member/member.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { StoreModule } from './store/store.module';
       isGlobal: true
     }),
     UserModule,
-    StoreModule
+    StoreModule,
+    MemberModule
   ],
   controllers: []
 })
