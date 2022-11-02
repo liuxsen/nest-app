@@ -1,20 +1,21 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { Store } from '../../store/entities/store.entity'
+import { Product } from './product.entity'
 
+// 商品sku 属性值表
 @Entity()
-export class Product {
+export class ProductSkuValue {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  name: string
-
-  @ManyToOne(type => Store, Store => Store.products)
-  store: Store
+  value: string
 
   @CreateDateColumn()
   createAt: Date
 
   @UpdateDateColumn()
   updateAt: Date
+
+  @ManyToOne(() => Product)
+  product: Product
 }

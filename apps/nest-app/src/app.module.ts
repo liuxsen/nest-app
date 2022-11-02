@@ -7,6 +7,9 @@ import { StoreModule } from './store/store.module'
 import { MemberModule } from './member/member.module'
 import { OrderModule } from './order/order.module'
 import { ProductModule } from './product/product.module';
+import { StaffModule } from './staff/staff.module';
+import { RoleModule } from './role/role.module';
+import { ResourceModule } from './resource/resource.module';
 
 @Module({
   imports: [
@@ -35,7 +38,10 @@ import { ProductModule } from './product/product.module';
     StoreModule,
     MemberModule,
     OrderModule,
-    ProductModule
+    ProductModule,
+    StaffModule,
+    RoleModule,
+    ResourceModule
   ],
   controllers: []
 })

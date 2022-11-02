@@ -1,20 +1,21 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { Store } from '../../store/entities/store.entity'
+import { Product } from './product.entity'
 
+// 商品sku属性表
 @Entity()
-export class Product {
+export class ProductSkuAttr {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  name: string
-
-  @ManyToOne(type => Store, Store => Store.products)
-  store: Store
+  attribute: string
 
   @CreateDateColumn()
   createAt: Date
 
   @UpdateDateColumn()
   updateAt: Date
+
+  @ManyToOne(() => Product)
+  product: Product
 }
