@@ -4,7 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { ConfigService } from '@nestjs/config'
 import { ApiTags } from '@nestjs/swagger'
-import { BusinessException } from '../common/exceptions/business.exception.filter';
+import { BusinessException } from '../common/exceptions/business.exception.filter'
 import { Cache } from 'cache-manager'
 import { ClientProxy } from '@nestjs/microservices'
 
@@ -18,28 +18,28 @@ export class UserController {
     @Inject('MATH_SERVICE') private readonly client: ClientProxy
   ) {}
 
-
   @Post()
   create (@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto)
   }
 
   @Get('service')
-  getService(@Query('name') name: string){
-    return this.client.send({cmd: 'getHello'}, name).toPromise()
+  getService (@Query('name') name: string) {
+    return this.client.send({ cmd: 'getHello' }, name).toPromise()
   }
 
   @Get('sec-cache')
-  setCache(){
+  setCache () {
     return this.cacheManager.set('cache-key', 1, 5000)
   }
 
   @Get('cache')
-  async getCache(){
+  async getCache () {
     const data = await this.cacheManager.get('cache-key')
     console.log(data)
     return data
   }
+
   @Get()
   findAll () {
     // return this.configService.get('TEST_VALUE').name
