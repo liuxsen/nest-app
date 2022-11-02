@@ -9,4 +9,6 @@ export const BUSINESS_ERROR_CODE = {
   PERMISSION_DISABLED: 10003,
   // 用户已冻结
   USER_DISABLED: 10004,
-};
+  // 用户已存在
+  USER_ALREADY_EXSITS: 10005
+}

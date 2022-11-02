@@ -11,6 +11,11 @@ export class Resource {
   @PrimaryGeneratedColumn()
   id: number
 
+  @Column({
+    comment: '父级资源'
+  })
+  parentId: number
+
   @Column()
   name: string
 
