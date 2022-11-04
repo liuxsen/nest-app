@@ -8,6 +8,7 @@ import { BusinessException } from '../common/exceptions/business.exception.filte
 import { BUSINESS_ERROR_CODE } from '../common/exceptions/business.error.codes'
 import { PaginationDto } from '../common/dto/pagination.dto'
 import { getPaginationParams } from '../common/utils/getPaginationParams'
+import { hash } from '../common/utils/crypto.salt'
 
 @Injectable()
 export class UserService {
@@ -30,8 +31,26 @@ export class UserService {
         message: '用户已存在'
       })
     }
-    const user = this.userReponstory.create(createUserDto)
+    const { hashPwd, salt } = hash(createUserDto.password)
+    const user = this.userReponstory.create({
+      ...createUserDto,
+      password: hashPwd,
+      salt
+    })
     return this.userReponstory.save(user)
+  }
+
+  findWithPhone (phone: string) {
+    return this.userReponstory.findOne({
+      where: {
+        phone
+      },
+      select: {
+        id: true,
+        password: true,
+        salt: true
+      }
+    })
   }
 
   async findAll (paginationDto: PaginationDto) {

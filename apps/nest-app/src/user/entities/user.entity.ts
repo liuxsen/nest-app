@@ -15,6 +15,13 @@ export class User {
   })
   password: string
 
+  @Column({
+    comment: '密码盐',
+    select: false,
+    default: ''
+  })
+  salt: string
+
   @Column({ comment: '手机号' })
   phone: string
 

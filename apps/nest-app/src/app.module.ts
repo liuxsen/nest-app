@@ -10,6 +10,7 @@ import { ProductModule } from './product/product.module';
 import { StaffModule } from './staff/staff.module';
 import { RoleModule } from './role/role.module';
 import { ResourceModule } from './resource/resource.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -41,7 +42,8 @@ import { ResourceModule } from './resource/resource.module';
     ProductModule,
     StaffModule,
     RoleModule,
-    ResourceModule
+    ResourceModule,
+    AuthModule
   ],
   controllers: []
 })

@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus } from '@nestjs/common'
 import { BUSINESS_ERROR_CODE } from './business.error.codes'
 
-type BusinessError = {
+export type BusinessError = {
   code: number;
   message: string;
 };

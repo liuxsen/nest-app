@@ -1,4 +1,4 @@
-import { ArgumentsHost, Catch, ExceptionFilter,ServiceUnavailableException, HttpStatus } from '@nestjs/common'
+import { ArgumentsHost, Catch, ExceptionFilter, ServiceUnavailableException, HttpStatus } from '@nestjs/common'
 import { Request, Response } from 'express'
 
 // 异常请求拦截
@@ -10,6 +10,7 @@ export class AllExceptionFilter<T> implements ExceptionFilter {
     const request = ctx.getRequest<Request>()
 
     // request.log.error(exception)
+    console.log(exception)
 
     // 非 HTTP 标准异常的处理。
     response
